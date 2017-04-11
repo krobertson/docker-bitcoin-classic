@@ -1,0 +1,25 @@
+workspace:
+  base: /srv/app
+  path: docker-bitcoin-classic
+
+pipeline:
+  clone:
+    image: plugins/git
+    tags: true
+    skip_verify: true
+
+  docker:
+    image: plugins/docker
+    repo: krobertson/bitcoin-classic
+    tags: [ '${DRONE_TAG##v}' ]
+    when:
+      event: [ tag ]
+      branch: [ refs/tags/* ]
+
+  docker:
+    image: plugins/docker
+    repo: krobertson/bitcoin-classic
+    tags: [ 'latest' ]
+    when:
+      event: [ push ]
+      branch: [ master ]
