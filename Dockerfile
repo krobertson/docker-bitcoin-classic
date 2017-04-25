@@ -1,10 +1,10 @@
 FROM alpine:3.5
 
 ENV GLIBC_VERSION=2.25-r0 \
-    BITCOIN_VERSION=1.2.4 \
-    BITCOIN_URL=https://github.com/bitcoinclassic/bitcoinclassic/releases/download/v1.2.4/bitcoin-1.2.4-linux64.tar.gz \
-    BITCOIN_SHA256=a177ec6b44c673d0834f1486cb9bf999d962c40bc476dcafd3b22879757ea5b7 \
-    BITCOIN_ASC_URL=https://github.com/bitcoinclassic/bitcoinclassic/releases/download/v1.2.4/SHA256SUMS.asc \
+    BITCOIN_VERSION=1.2.5 \
+    BITCOIN_URL=https://github.com/bitcoinclassic/bitcoinclassic/releases/download/v1.2.5/bitcoin-1.2.5-linux64.tar.gz \
+    BITCOIN_SHA256=91438d75349814e49d54fdcbce2af42ebf561048688cecf59fbd293bbb1ef77c \
+    BITCOIN_ASC_URL=https://github.com/bitcoinclassic/bitcoinclassic/releases/download/v1.2.5/SHA256SUMS.asc \
     BITCOIN_PGP_KEY=C07B28FD422F1B49E78889F5C2A5545EA91CCAE7 \
     BITCOIN_DATA=/data
 
