@@ -1,10 +1,10 @@
-FROM alpine:3.5
+FROM alpine:3.6
 
 ENV GLIBC_VERSION=2.25-r0 \
-    BITCOIN_VERSION=1.2.5 \
-    BITCOIN_URL=https://github.com/bitcoinclassic/bitcoinclassic/releases/download/v1.2.5/bitcoin-1.2.5-linux64.tar.gz \
-    BITCOIN_SHA256=91438d75349814e49d54fdcbce2af42ebf561048688cecf59fbd293bbb1ef77c \
-    BITCOIN_ASC_URL=https://github.com/bitcoinclassic/bitcoinclassic/releases/download/v1.2.5/SHA256SUMS.asc \
+    BITCOIN_VERSION=1.3.2 \
+    BITCOIN_URL=https://github.com/bitcoinclassic/bitcoinclassic/releases/download/v1.3.2/bitcoin-1.3.2-linux64.tar.gz \
+    BITCOIN_SHA256=1daee66697f373f67dd25c44461f7cd9c774bef08011d067d6ef77005a52d418 \
+    BITCOIN_ASC_URL=https://github.com/bitcoinclassic/bitcoinclassic/releases/download/v1.3.2/SHA256SUMS.asc \
     BITCOIN_PGP_KEY=C07B28FD422F1B49E78889F5C2A5545EA91CCAE7 \
     BITCOIN_DATA=/data
 
@@ -13,7 +13,7 @@ RUN set -ex \
     && apk --no-cache add ca-certificates wget gnupg \
 
     # Install and validate gosu -- GPG key: Tianon Gravi <tianon@tianon.xyz>
-	  && gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
+	  && gpg --keyserver ipv4.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
 	  && wget -qO /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/1.7/gosu-amd64" \
 	  && wget -qO /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/1.7/gosu-amd64.asc" \
 	  && gpg --verify /usr/local/bin/gosu.asc \
@@ -31,7 +31,7 @@ RUN set -ex \
 	  && BITCOIN_DIST=$(basename $BITCOIN_URL) \
 	  && wget -O $BITCOIN_DIST $BITCOIN_URL \
 	  && echo "$BITCOIN_SHA256  $BITCOIN_DIST" | sha256sum -c - \
-	  && gpg --keyserver pool.sks-keyservers.net --recv-keys $BITCOIN_PGP_KEY \
+	  && gpg --keyserver ipv4.pool.sks-keyservers.net --recv-keys $BITCOIN_PGP_KEY \
 	  && wget -qO bitcoin.asc $BITCOIN_ASC_URL \
 	  && gpg --verify bitcoin.asc \
     && mkdir bitcoin-bin \
