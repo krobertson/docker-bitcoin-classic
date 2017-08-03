@@ -17,7 +17,7 @@ This image is based on [amacneil/docker-bitcoin](https://github.com/amacneil/doc
 
 ### Usage
 
-To start a bitcoind instance running the latest version (`1.2.5`):
+To start a bitcoind instance running the latest version (`1.3.3`):
 
 ```
 $ docker run --name bitcoin-node krobertson/bitcoin-classic
